@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+
+<div id="yqzx">
+   <h1 v-if="status"> 云雀智享 </h1>
+    <h4 v-show="status">ffrfr</h4>
+    <input type="checkbox" v-model="status">
+       
+
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            status:true
+        }
+    })
+</script>
+</body>
+</html>

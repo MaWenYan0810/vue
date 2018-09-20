@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .green{color:green}
+        .color{color:red}
+        .font{font-size: 200px}
+    </style>
+</head>
+<body>
+    <div id="yqzx">
+        <span class="green" :class="hd">云雀智享</span>
+        <br>
+        <span :class="[success,font]">https:800fuwu.cn</span>
+    </div>
+    <script>
+        var app=new Vue({
+            el:"#yqzx",
+            data:{
+                //使用对象改变样式
+                hd:{color:true,font:true},
+                //使用数组改变样式
+                success:'color',
+                font:'font'
+            }
+        })
+    </script>
+</body>
+</html>

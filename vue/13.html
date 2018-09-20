@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .success{color:green}
+        .error{color:red}
+    </style>
+</head>
+<body>
+<div id="yqzx">
+    <!--对象的形式改变样式-->
+    <h1 :style="{color:green,fontSize:size+'px'}">云雀智享</h1>
+    <h2 :style="style">云雀智享</h2>
+    <!--数组的形式改变样式-->
+    <h3 :style="[rgkf]">人工客服</h3>
+    <input type="number" v-model="size">
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            green:'green',
+            size:16,
+            style:{
+                color:"blue",
+                fontWeight:800
+            },
+            rgkf:{
+                background:"black",
+                color:"#fff"
+            }
+
+
+        }
+    })
+</script>
+</body>
+</html>

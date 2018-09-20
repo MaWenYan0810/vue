@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .success{color:green}
+        .error{color:red}
+    </style>
+</head>
+<body>
+<div id="yqzx">
+    <input type="checkbox" v-model="copyright">接受协议
+    <span v-if="copyright===false">请先接受协议</span>
+    <!--<button v-else>注册</button>-->
+    <button  v-if="copyright===true">注册</button>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        // methods:{
+        //     changeStatus:function(item,status){
+        //         item.status=status;
+        //     }
+        // },
+        data:{
+            // news:[
+            //     {title:'云雀智享',status:true},
+            //     {title:'人工客服',status:true},
+            // ]
+            copyright:true
+        }
+    })
+</script>
+</body>
+</html>

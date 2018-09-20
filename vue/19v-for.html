@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+    <li v-for="feild in stus">
+         {{feild.name}}----{{feild.sex}}
+    </li>
+    <input type="radio" v-model="type" value="0"> 男孩
+    <input type="radio" v-model="type" value="1"> 女孩
+    <!--<table border="1">-->
+        <!--<thead>-->
+        <!--<tr>编号</tr>-->
+        <!--<tr>姓名</tr>-->
+        <!--<tr>年龄</tr>-->
+        <!--<tr>住址</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr v-for="v in user">-->
+            <!--<td>{{v.id}}</td>-->
+            <!--<td>{{v.name}}</td>-->
+            <!--<td>{{v.age}}</td>-->
+            <!--<td>{{v.address}}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        computed:{
+            stus(){
+                if(this.type==='all'){
+                    return this.user;
+                }else{
+                    return this.user.filter((v)=>{
+                        return v.sex==this.type
+                    });
+                }
+            }
+        },
+        data:{
+            type:"all",
+            user:[
+                {id:1,name:"张三",age:"22",address:"北京",sex:"0"},
+                {id:2,name:"李四",age:"33",address:"上海",sex:"1"},
+                {id:3,name:"王五",age:"44",address:"广州",sex:"1"}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

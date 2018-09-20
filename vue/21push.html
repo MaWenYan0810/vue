@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+
+    <li v-for="v in comments">
+        {{v.content}}
+    </li>
+
+    <textarea name="" id="" cols="30" rows="10" v-model="current_content"></textarea>
+    <button @click="send('end')">发表到后</button>
+    <button @click="send('pre')">发表到前</button>
+    <button @click="del('end')">删除第一个</button>
+    <button @click="del('pre')">删除最后一个</button>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            current_content:'',
+            comments:[
+                {content:"智能"},
+                {content:"客服"}
+            ],
+        },
+        methods:{
+            send(type){
+                let a={content:this.current_content};
+                switch (type) {
+                   case 'end':
+                   this.comments.push(a);
+                   break;
+                    case 'pre':
+                        this.comments.unshift(a);
+                        break
+                }
+            },
+            del(type){
+                let a={content:this.current_content};
+                switch (type) {
+                    case 'end':
+                        this.comments.shift();
+                        break;
+                    case 'pre':
+                        this.comments.pop();
+                        break
+                }
+
+
+            }
+        },
+    })
+</script>
+</body>
+</html>

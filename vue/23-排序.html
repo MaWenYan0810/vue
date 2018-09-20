@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+
+    <li v-for="(v,k) in comments">
+        {{v.id}}-{{v.content}}<button @click="update(k)">删除</button>
+    </li>
+
+    <textarea name="" id="" cols="30" rows="10" v-model="current_content"></textarea>
+    <button @click="send('end')">发表到后</button>
+    <button @click="send('pre')">发表到前</button>
+    <button @click="del('end')">删除第一个</button>
+    <button @click="del('pre')">删除最后一个</button>
+    <button @click="sort()">排序</button>
+    <button @click="reverse()">翻转</button>
+    <button @click="delAll()">删除全部</button>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            current_content:'',
+            comments:[
+                {id:2,content:"客服"},
+                {id:1,content:"智能"},
+
+            ],
+        },
+        methods:{
+            send(type){
+                let a={id:this.comments.length+1,content:this.current_content};
+                switch (type) {
+                    case 'end':
+                        this.comments.push(a);
+                        break;
+                    case 'pre':
+                        this.comments.unshift(a);
+                        break
+                }
+            },
+            del(type){
+                let a={content:this.current_content};
+                switch (type) {
+                    case 'end':
+                        this.comments.shift();
+                        break;
+                    case 'pre':
+                        this.comments.pop();
+                        break
+                }
+            },
+            update(k){
+                this.comments.splice(k,1);
+            },
+            sort(){
+                this.comments.sort(function(a,b){
+                    return a.id>b.id
+                });
+            },
+            reverse(){
+                this.comments.reverse();
+            },
+            delAll(){
+                this.comments=[];
+            }
+        },
+    })
+</script>
+</body>
+</html>
