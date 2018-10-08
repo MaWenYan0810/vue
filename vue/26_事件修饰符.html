@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>禁止事件的默认行为</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+    <form action="" @submit.prevent="post()">
+        <h1>{{times}}</h1>
+        <button>提交</button>
+    </form>
+    <form action="" @submit="post1($event)">
+        <h1>{{times}}</h1>
+        <button>提交</button>
+    </form>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            times:new Date(),
+        },
+        methods:{
+            post(){
+                alert("sds")
+            },
+            post1(event){
+                event.preventDefault();
+                alert("sds")
+            }
+        },
+    })
+</script>
+</body>
+</html>

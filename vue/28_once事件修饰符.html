@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>只允许执行一次事件</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+    <div @click.self="box" style="border:1px solid blue">
+        <a href="https://www.baidu.com" @click.stop.prevent.once="links">百度一下</a>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+
+        },
+        methods:{
+
+        },
+    })
+</script>
+</body>
+</html>
