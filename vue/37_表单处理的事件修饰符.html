@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单修饰符</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--trim表示可以过滤输入内容前后的空格，中间无法过滤-->
+<!--lazy表示懒加载，鼠标离开输入框是验证-->
+<div  id="yqzx">
+    <form class="form-horizontal" @submit.prevent="send">
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">标题</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="标题" v-model.trim.lazy="filed.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">栏目</label>
+            <div class="col-sm-6">
+                <!--<select name="" id="" v-model="filed.type" class="form-control">-->
+                <!--<option value="">请选择栏目</option>-->
+                <!--<option value="0">生活</option>-->
+                <!--<option value="1">娱乐</option>-->
+                <!--<option value="2">学习</option>-->
+                <!--</select>-->
+
+                <select name="" id="" v-model="filed.type" class="form-control" >
+                    <option v-for="type in cotegory" :value="type.cid"  :key="type.cid">{{type.title}}</option>
+                </select>
+                <!--multiple表示可以在下拉选中选择多个值-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">点击数</label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control"  placeholder="点击数" v-model.number="filed.click">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">路径</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  placeholder="路径" v-model="filed.url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">摘要</label>
+            <div class="col-sm-6">
+                <textarea  class="form-control"  placeholder="摘要" v-model="filed.desc"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">类型</label>
+            <div class="col-sm-6">
+                <div class="radio-inline" v-for="v in dafts" :key="v.cid">
+                    <input type="radio" v-model="filed.daft" :value="v.cid"> {{v.title}}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button  class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            dafts:[
+                {cid:0,title:"草稿"},
+                {cid:1,title:"正式发布"},
+            ],
+            cotegory:[
+                {cid:1,title:"新闻"},
+                {cid:2,title:"学习"},
+                {cid:3,title:"生活"},
+                {cid:4,title:"体育"},
+            ] ,
+            filed:{
+                title:'vue学习',
+                click:399,
+                url:'https://www.baidu.com',
+                desc:"这是内容摘要",
+                daft:0,
+                flag:[],
+                type:'',
+            }
+        },
+        methods:{
+            send(){
+                console.log(this.filed)
+            }
+        },
+        watch:{
+            "filed.click":function(n,o){
+                console.log(typeof(n))
+            },
+            "filed.title":function(n,o){
+                console.log(n.length)
+            }
+        }
+    })
+</script>
+</body>
+</html>
