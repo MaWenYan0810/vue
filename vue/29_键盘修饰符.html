@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘修饰符</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+    <input type="text" @keydown.enter="send" v-model="msg"> <!-- 回车键-->
+    <input type="text" @keydown.tab="send" v-model="msg"> <!-- tab键 -->
+    <input type="text" @keydown.delete="clear" v-model="msg"> <!-- del键-->
+    <input type="text" @keydown.esc="clear" v-model="msg">   <!-- ecs键-->
+    <input type="text" @keydown.space="clear" v-model="msg">   <!-- 空格键-->
+    <!-- up down right left alt ctrl shift-->
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            msg:'',
+        },
+        methods:{
+            send(){
+                console.log(this.msg)
+            },
+            clear(){
+                this.msg='';
+            },
+        },
+    })
+</script>
+</body>
+</html>

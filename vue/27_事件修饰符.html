@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的链式操作</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--prevent  禁止事件的默认行为-->
+<!--stop  阻止冒泡-->
+<!--self  只有点击自己可以触发-->
+<!--capture  捕获行为，从父元素执行到子元素-->
+<div  id="yqzx">
+  <div @click.self="box" style="border:1px solid blue">
+      <a href="https://www.baidu.com" @click="links">百度一下</a>
+  </div>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+
+        },
+        methods:{
+            box(){
+                alert("box")
+            },
+            links(){
+                alert("baidu")
+            },
+        },
+    })
+</script>
+</body>
+</html>
