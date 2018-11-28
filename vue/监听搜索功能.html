@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="yqzx">
+    <input type="text" v-model="word">
+</div>
+<script>
+  var app=new Vue({
+      el:'#yqzx',
+      watch:{
+          word:function(newV,oldV){
+              axios.get('2.php').then(function(response){
+                  console.log(response)
+              })
+          // console.log(newV+ '=>'+oldV)
+          }
+      },
+      data:{
+          word:''
+      }
+  })
+</script>
+</body>
+</html>

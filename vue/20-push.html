@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+
+    <li v-for="v in comments">
+        {{v.content}}
+    </li>
+
+    <textarea name="" id="" cols="30" rows="10" v-model="current_content"></textarea>
+    <button @click="send()">发表</button>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            current_content:'',
+            comments:[
+                {content:"智能"},
+                {content:"客服"}
+            ],
+        },
+        methods:{
+            send(){
+                let a={content:this.current_content};
+                this.comments.push(a)
+
+            }
+        },
+    })
+</script>
+</body>
+</html>

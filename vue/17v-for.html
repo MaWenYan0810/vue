@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+<table border="1">
+<thead>
+<tr>
+    <td>序号</td>
+    <td>编号</td>
+    <td>姓名</td>
+    <td>住址</td>
+</tr>
+</thead>
+<tbody>
+ <tr v-for="(field,key) in news">
+     <td>{{key+1}}</td>
+     <td>{{field.id}}</td>
+     <td>{{field.name}}</td>
+     <td>{{address}}</td>
+ </tr>
+</tbody>
+
+</table>
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            address:"北京市",
+            news:[
+                {id:3,name:"deed"},
+                {id:5,name:"的撒打算"}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

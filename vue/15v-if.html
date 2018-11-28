@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="yqzx">
+    <template v-if="regType=='mail'">
+        邮箱：<input type="text" key="mail-reg">
+    </template>
+    <template v-if="regType=='phone'">
+        手机：<input type="text" key="phone-reg">
+    </template>
+    <input type="radio" value="mail" v-model="regType">邮箱
+    <input type="radio" value="phone" v-model="regType">手机
+</div>
+<script>
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            regType:'mail'
+        }
+    })</script>
+
+</body>
+</html>
