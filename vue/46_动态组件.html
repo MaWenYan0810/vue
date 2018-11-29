@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+    <!--<yq-header >  </yq-header>-->
+    <!--<yq-text >    </yq-text>-->
+    <div :is="formType"></div>
+    <input type="radio" v-model="formType" value="yqHeader">文本框
+    <input type="radio" v-model="formType" value="yqText">文本域
+</div>
+
+
+<!--<script type="text/x-handlebars-template" id="yqHeader">-->
+
+<!--</script>-->
+
+<script>
+    var yqHeader={
+        template:' <div><input type="text"/></div> ',
+        props:['list'],
+    };
+    var yqText={
+        template:' <div><textarea row="3" col="3"></textarea></div> ',
+    };
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        data(){
+            return{
+                news:[
+                    {title:'上衣',num:1,price:100},
+                    {title:'帽子',num:2,price:200},
+                    {title:'裤子',num:3,price:300},
+                ],
+                formType:'yqHeader'
+            }
+        },
+        //声明局部组件
+        components:{
+            yqHeader,yqText
+        },
+        methods:{
+
+        },
+    })
+</script>
+</body>
+</html>

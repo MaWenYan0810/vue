@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86615193-4838-40d0-9806-eef3f06ef614" name="Default" comment="" />
+    <list default="true" id="86615193-4838-40d0-9806-eef3f06ef614" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/vue/38_组件.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/39_组件操作数据.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/40_组件传值.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -48,6 +52,15 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1586262628">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="learn" />
@@ -58,14 +71,7 @@
         <entry file="file://$PROJECT_DIR$/vue/25-事件.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-              <folding>
-                <element signature="e#1037#1404#0" />
-                <element signature="e#1427#1763#0" />
-                <element signature="e#1786#1844#0" />
-                <element signature="e#1864#1986#0" />
-                <element signature="e#2087#2136#0" />
-              </folding>
+              <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -79,6 +85,9 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -125,7 +134,7 @@
       <path value="$PROJECT_DIR$/vue/node_modules/ms/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="557" />
     <option name="width" value="812" />
     <option name="height" value="565" />
@@ -141,8 +150,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="learn" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -215,11 +229,12 @@
       <workItem from="1535694849709" duration="74000" />
       <workItem from="1535694949065" duration="1204000" />
       <workItem from="1537426579968" duration="888000" />
+      <workItem from="1539947133181" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47722000" />
+    <option name="totallyTimeSpent" value="47736000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -231,10 +246,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49878347" visible="true" weight="0.22767857" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49878347" visible="true" weight="0.13095239" />
       <window_info id="Structure" order="1" sideWeight="0.50121653" side_tool="true" weight="0.15178572" />
       <window_info id="Favorites" order="2" sideWeight="0.50121653" side_tool="true" weight="0.15178572" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -247,7 +261,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4940476" weight="0.09150327" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50595236" side_tool="true" weight="0.09150327" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -284,7 +298,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/vue/25-事件.html</url>
           <line>63</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -414,14 +427,7 @@
     <entry file="file://$PROJECT_DIR$/vue/25-事件.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-          <folding>
-            <element signature="e#1037#1404#0" />
-            <element signature="e#1427#1763#0" />
-            <element signature="e#1786#1844#0" />
-            <element signature="e#1864#1986#0" />
-            <element signature="e#2087#2136#0" />
-          </folding>
+          <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
         </state>
       </provider>
     </entry>

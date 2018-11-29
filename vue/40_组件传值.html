@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件之间的传值</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--父组件调用的子组件的变量名称和props里面声明的变量、还有子组件里面使用的变量名称，三者必须统一-->
+<div  id="yqzx">
+    <yq-header aa="news" :show-del-button="false" :dd="news"></yq-header>
+</div>
+<script type="text/x-handlebars-template" id="yqkf">
+    <div>
+        <li v-for="(v,k) in dd">{{v.title}}
+            <button type="button" @click="del(k)" v-if="showDelButton">删除</button>
+        </li>
+    </div>
+</script>
+<script>
+    var yqHeader={
+        template:'#yqkf',
+        //props里面的变量名称只能由大小写字母，数字，下划线组成，且必须用驼峰命名
+        props:['aa','showDelButton','dd'],//父给子组件传值，必须用props声明
+        data(){
+            return{
+            }
+        },
+    };
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+            news:[
+                {title:'学习',id:1},
+                {title:'新闻',id:2},
+                {title:'生活',id:3},
+            ]
+        },
+        //声明局部组件
+        components:{
+            yqHeader
+        },
+        methods:{
+
+        },
+    })
+</script>
+</body>
+</html>

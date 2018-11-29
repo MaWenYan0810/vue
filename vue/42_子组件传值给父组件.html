@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子组件给父组件的传值</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+    <yq-header  :list="news" @add="totalPrice"></yq-header>
+    <p>总计:{{total}}</p>
+</div>
+
+
+<script type="text/x-handlebars-template" id="yqkf">
+    <table border="1" width="80%">
+        <thead>
+            <th>名称</th>
+            <th>数量</th>
+            <th>价格</th>
+        </thead>
+        <tbody>
+            <tr v-for="(v,index) in list" :key="index">
+                <td>{{v.title}}</td>
+                <td>
+                    <input type="text" v-model="v.num" @blur="com">
+                </td>
+                <td>
+                    {{v.price}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+<script>
+    var yqHeader={
+        template:'#yqkf',
+        props:['list'],
+        data(){
+            return{}
+        },
+        methods: {
+            com(){
+                this.$emit('add')
+            }
+        },
+    };
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        data(){
+            return{
+                news:[
+                    {title:'上衣',num:1,price:100},
+                    {title:'帽子',num:2,price:200},
+                    {title:'裤子',num:3,price:300},
+                ],
+                total:0,
+            }
+        },
+        mounted(){
+            this.totalPrice();
+        },
+        //声明局部组件
+        components:{
+            yqHeader
+        },
+        methods:{
+            totalPrice(){
+                this.total=0;
+                this.news.forEach((v)=>{
+                    this.total+=v.price*v.num;
+                })
+            }
+        },
+    })
+</script>
+</body>
+</html>
