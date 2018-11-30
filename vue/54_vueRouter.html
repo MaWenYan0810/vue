@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+        <router-link to="/wcm">知识库管理</router-link>
+        <router-link to="/ticket">工单系统</router-link>
+        <router-view></router-view>
+</div>
+<script>
+    const wcm={
+        template :'<h1>知识库</h1>'
+    };
+    const ticket={
+        template :'<h1>工单系统</h1>'
+    };
+    //第一种路由传递
+    // let router=new VueRouter({
+    //     routes:[
+    //         {path:'/wcm',component:wcm},
+    //         {path:'/ticket',component:ticket}
+    //     ]
+    // });
+    // //根组件
+    // var app=new Vue({
+    //     el:"#yqzx",
+    //     router:router,
+    // })
+    //第二种路由传递
+    let routes=[
+        {path:'/wcm',component:wcm},
+        {path:'/ticket',component:ticket}
+    ];
+    let router=new VueRouter({routes})//变量名称和生命名称一样的时候，可以省略
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        router,
+    })
+</script>
+<style>
+
+</style>
+</body>
+
+</html>
