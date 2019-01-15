@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+    <script src="js/vuex.min.js"></script>
+    <link rel="stylesheet" href="lib/animate/animate.css">
+    <title>vuex</title>
+</head>
+<body>
+<div id="hdcms">
+    <list></list>
+</div>
+<script type="text/x-template" id="List">
+    <transition enter-active-class="animated flip">
+        <div>
+            <h1>总价：{{totalPrice}}</h1>
+            <table>
+                <tr v-for="(v,index) in books" :key="index">
+                    <td>{{v.id}}</td>
+                    <td>{{v.num}}</td>
+                    <td>{{v.title}}</td>
+                </tr>
+            </table>
+        </div>
+    </transition>
+</script>
+<script>
+    const List = {
+        template: '#List',
+        computed:{
+            totalPrice(){
+                return this.$store.state.totalPrice
+            },
+            books(){
+                return this.$store.state.goods
+            }
+        }
+    };
+   let store=new Vuex.Store({
+       state:{
+           totalPrice:100,
+           goods:[
+               {id:1,title:'语文书',num:'3'},
+               {id:2,title:'数学书',num:'2'},
+               {id:3,title:'英语数',num:'1'},
+           ]
+       }
+   });
+    new Vue({
+        el: '#hdcms',
+        store,
+        components:{List}
+    });
+</script>
+</body>
+</html>

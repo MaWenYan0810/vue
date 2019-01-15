@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+    <script src="js/vuex.min.js"></script>
+    <link rel="stylesheet" href="lib/animate/animate.css">
+    <title>vuex</title>
+</head>
+<body>
+<div id="hdcms">
+    <list></list>
+</div>
+<script type="text/x-template" id="List">
+    <transition enter-active-class="animated flip">
+        <div>
+            <table>
+                <tr>
+                    <th>个数</th>
+                    <th>名称</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                </tr>
+                <tr v-for="(v,index) in books" :key="index">
+                    <td>{{v.id}}</td>
+                    <td>{{v.title}}</td>
+                    <td>{{v.price}}</td>
+                    <td>{{v.num}}</td>
+                </tr>
+            </table>
+            <h1>总价：{{totalPrice}}</h1>
+        </div>
+    </transition>
+</script>
+<script>
+    const List = {
+        template: '#List',
+        computed:{
+            totalPrice(){
+                return this.$store.getters.totalPrice
+            },
+            books(){
+                return this.$store.state.goods
+            }
+        }
+    };
+    let store=new Vuex.Store({
+        state:{
+            goods:[
+                {id:1,title:'语文书',num:'3',price:'120'},
+                {id:2,title:'数学书',num:'2',price:'150'},
+                {id:3,title:'英语数',num:'1',price:'70'},
+            ]
+        },
+        getters:{
+            totalPrice:state=>{
+                let totalPrice=0;
+                state.goods.forEach((a)=>{
+                    console.log(a)
+                     totalPrice+=a.price*a.num;
+                });
+                return totalPrice
+    }
+        }
+    });
+    new Vue({
+        el: '#hdcms',
+        store,
+        components:{List}
+    });
+</script>
+</body>
+</html>
