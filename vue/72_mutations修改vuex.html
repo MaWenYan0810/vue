@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+    <script src="js/vuex.min.js"></script>
+    <link rel="stylesheet" href="lib/animate/animate.css">
+    <title>vuex</title>
+</head>
+<body>
+<div id="hdcms">
+    <list></list>
+    <foot-cart></foot-cart>
+</div>
+<script type="text/x-template" id="List">
+    <transition enter-active-class="animated flip">
+        <div >
+            <div v-if="books.length<=0">去购物</div>
+            <table v-if="books.length>0">
+                <tr>
+                    <th>个数</th>
+                    <th>名称</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>总计</th>
+                </tr>
+                <tr v-for="(v,index) in books" :key="index">
+                    <td>{{v.id}}</td>
+                    <td>{{v.title}}</td>
+                    <td>{{v.price}}</td>
+                    <td><input type="text" v-model="v.num"></td>
+                    <td>{{v.allPrice}}</td>
+                    <td><button @click="del(v)">删除</button></td>
+                </tr>
+            </table>
+        </div>
+    </transition>
+</script>
+<script type="text/x-template" id="footCart">
+    <div v-if="totalPrice>0">
+        <h4 >总价：{{totalPrice}}</h4>
+    </div>
+
+</script>
+<script>
+    const List = {
+        template: '#List',
+        methods:{
+            del(id){
+                this.$store.commit('del',{id})
+            },
+        },
+        computed:{
+            books(){
+                return this.$store.getters.goods
+            }
+        }
+    };
+    const footCart = {
+        template: '#footCart',
+        computed:{
+            totalPrice(){
+                return this.$store.getters.totalPrice
+            },
+        }
+    };
+    let store=new Vuex.Store({
+        state:{//仓库
+            goods:[
+                {id:1,title:'语文书',num:'3',price:'120'},
+                {id:2,title:'数学书',num:'2',price:'150'},
+                {id:3,title:'英语数',num:'1',price:'70'},
+            ]
+        },
+        getters:{//获取仓库数据
+            totalPrice:state=>{
+                let totalPrice=0;
+                state.goods.forEach((a)=>{
+                    totalPrice+=a.price*a.num;
+                });
+                return totalPrice
+            },
+            goods(state){
+                let goods=state.goods;
+                goods.forEach((a)=>{
+                    a.allPrice=a.num*a.price;
+                });
+                return goods
+            }
+        },
+        mutations:{
+            del(state,parms){
+               for(let a=0;a<state.goods.length;a++){
+                   console.log(parms.id,state.goods[a].id);
+                   if(state.goods[a].id==parms.id.id){
+                       state.goods.splice(a,1);
+                   }
+               }
+            }
+        }
+    });
+    new Vue({
+        el: '#hdcms',
+        store,
+        components:{List,footCart}
+    });
+</script>
+</body>
+</html>

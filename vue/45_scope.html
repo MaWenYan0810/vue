@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件使用</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+    <yq-header :list="news">
+        <template scope="v">
+            {{v.username}}
+        </template><!--查找组件data里面的v，取出子组件的值-->
+        <!--查找当前data里面的v，但是当前数据没有，结果报错-->
+        <!--<div scope="v">-->
+            <!--{{v}}-->
+        <!--</div>-->
+    </yq-header>
+
+</div>
+
+
+<script type="text/x-handlebars-template" id="yqHeader">
+    <ul>
+        <!--<li v-for="v in list">{{v.title}}</li>-->
+        <slot v-for="v in list" :username="v"></slot>
+    </ul>
+</script>
+
+<script>
+    var yqHeader={
+        template:'#yqHeader',
+        props:['list'],
+    };
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        data(){
+            return{
+                news:[
+                    {title:'上衣',num:1,price:100},
+                    {title:'帽子',num:2,price:200},
+                    {title:'裤子',num:3,price:300},
+                ],
+            }
+        },
+        //声明局部组件
+        components:{
+            yqHeader,
+        },
+        methods:{
+
+        },
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由命名视图</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+    <style>
+        .menu{border:1px dashed blue;display:block}
+        .wcm{border:1px solid red;padding :10px;display:inline-block}
+        .weixin{border:1px solid green;padding :10px;display:inline-block}
+    </style>
+</head>
+<body>
+<div  id="yqzx">
+    <router-view class="menu"></router-view>
+    <router-view class="wcm" name="wcm"></router-view>
+    <router-view class="weixin" name="weixin"></router-view>
+</div>
+<script type="text/x-handlebars-template" id="wcm">
+    <div>
+       <li v-for="v in  news">{{v.name}}</li>
+    </div>
+</script>
+<script type="text/x-handlebars-template" id="weixin">
+    <div>
+        <li v-for="v in datas">{{v.name}}</li>
+    </div>
+</script>
+<script type="text/x-handlebars-template" id="menu">
+    <div>
+        智能客服系统
+    </div>
+</script>
+    <script>
+
+    const wcm={
+        template :'#wcm',
+        data(){
+            return{
+                news:[
+                    {name:'文件管理'},
+                    {name:'网页管理'},
+                    {name:'回收站'},
+                ],
+            }
+        },
+    };
+    const menu={
+        template :'#menu',
+    };
+    const weixin={
+        template :'#weixin',
+        data(){
+            return{
+                datas:[
+                    {name:'属性管理'},
+                    {name:'消息管理'},
+                    {name:'自定义菜单'},
+                ],
+            }
+        },
+    };
+    let routes=[
+        {path:'/',components:{
+            default:menu,
+            wcm:wcm,
+            weixin:weixin,
+        } },
+    ];
+    let router=new VueRouter({routes})//变量名称和生命名称一样的时候，可以省略
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        router,
+    })
+</script>
+<style>
+
+</style>
+</body>
+
+</html>

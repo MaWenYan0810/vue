@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用watch和mounted解决页面不刷新</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+    <router-view></router-view>
+</div>
+<script type="text/x-handlebars-template" id="wcm">
+    <div>
+        <ul>
+            <li v-for="v in news">
+                <router-link :to="{name:'weixin',params:{id:v.id}}">{{v.title}}</router-link>
+            </li>
+            <router-view></router-view>
+        </ul>
+
+    </div>
+</script>
+<script type="text/x-handlebars-template" id="weixin">
+    <div>
+        <!--<router-link to="/">返回上一页</router-link>-->
+        <h1>{{filed.title}}-{{filed.id}}</h1>
+        <h4>{{filed.content}}</h4>
+    </div>
+</script>
+<script>
+    var data=[
+        {id:1,title:'知识库管理',content:'知识库是指可以将用户的。。。。'},
+        {id:2,title:'微信管理',content:'微信管理是指用户可以通过页面配置微信公众号。。。'}
+    ];
+    const wcm={
+        template :'#wcm',
+        data(){
+            return{
+                news:data,
+            }
+        },
+        methods:{
+
+        }
+    };
+    const Notfound={
+        template :'<h1>找不到</h1>',
+    };
+    const weixin={
+        template :'#weixin',
+        data(){
+            return{
+                filed:{}
+            }
+        },
+        methods:{
+            response(){
+                for (let a=0;a<data.length;a++){
+                    if(data[a].id==this.$route.params.id){
+                        this.filed=data[a];
+                    }
+                }
+            }
+        },
+        mounted(){
+            this.response();
+        },
+        watch:{
+            '$route'(to,from){
+                this.response();
+            }
+        },
+    };
+    let routes=[
+        {path:'/',component:wcm,
+            children:[
+                {path:'/wcm/:id',component:weixin,name:'weixin'},
+            ]
+        },
+        {path:'*',component:Notfound},
+    ];
+    let router=new VueRouter({
+        mode:'history',//去掉url的锚点
+        routes
+    })//变量名称和生命名称一样的时候，可以省略
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        router,
+    })
+</script>
+<style>
+
+</style>
+</body>
+
+</html>

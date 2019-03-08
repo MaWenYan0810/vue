@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css动画</title>
+    <link rel="stylesheet" href="lib/animate/animate.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+    <button @click="type=!type">切换</button>
+    <transition enter-active-class="animated slideInDown" leave-active-class="animated zoomOut">
+        <h1 v-if="type">css动画</h1>
+    </transition>
+</div>
+
+
+
+<script>
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        data(){
+            return{
+                news:[
+                    {title:'上衣',num:1,price:100},
+                    {title:'帽子',num:2,price:200},
+                    {title:'裤子',num:3,price:300},
+                ],
+                type:'true'
+            }
+        },
+        //声明局部组件
+        components:{
+        },
+        methods:{
+
+        },
+    })
+</script>
+<style>
+
+</style>
+</body>
+
+</html>

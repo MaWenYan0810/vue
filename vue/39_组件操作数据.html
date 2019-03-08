@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div  id="yqzx">
+    <!--<yq-nav>导航</yq-nav>-->
+    <!--<yq-footer>尾部</yq-footer>-->
+    <yq-header></yq-header>
+    <br>
+    <yq-header></yq-header>
+    <br>
+    <yq-header></yq-header>
+    <br>
+</div>
+<!--script的类型定义为text/x-handlebars-template或者text/x-template浏览器不会识别，但是vue可以解析-->
+<script type="text/x-handlebars-template" id="yqkf">
+    <div>
+        <li v-for="(v,k) in news">{{v.title}}
+            <button type="button" @click="del(k)">删除</button>
+        </li>
+    </div>
+</script>
+<script>
+    var yqHeader={
+        template:'#yqkf',
+        //子组件的数据要用函数的形式，因为可能多次使用
+        data(){
+            return {
+                news:[
+                    {title:'学习',id:1},
+                    {title:'新闻',id:2},
+                    {title:'生活',id:3},
+                ]
+            }
+        },
+        methods: {
+            del(k){
+                this.news.splice(k,1)
+            }
+        }
+    };
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        data:{
+
+        },
+        //声明局部组件
+        components:{
+            // yqHeader:{
+            //     template:'<h3>晚上好</h3>',
+            // }
+            yqHeader
+        },
+        methods:{
+
+        },
+    })
+</script>
+</body>
+</html>

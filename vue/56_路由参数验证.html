@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由参数</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="lib/router/router.js"></script>
+</head>
+<body>
+<div  id="yqzx">
+    <router-link to="/wcm">知识库管理</router-link>
+    <router-view></router-view>
+</div>
+<script type="text/x-handlebars-template" id="wcm">
+    <div>
+        <h1>{{$route.params.id}}</h1>
+        <button @click="aa">参数</button>
+    </div>
+</script>
+<script>
+    const wcm={
+        template :'#wcm',
+        methods:{
+            aa(){
+                console.log(this.$route.params)
+            }
+        }
+    };
+    let routes=[
+        {path:'/wcm/:id(\\d{2})',component:wcm},
+    ];
+    let router=new VueRouter({routes})//变量名称和生命名称一样的时候，可以省略
+    //根组件
+    var app=new Vue({
+        el:"#yqzx",
+        router,
+    })
+</script>
+<style>
+
+</style>
+</body>
+
+</html>
